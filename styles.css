@@ -1,0 +1,77 @@
+
+/* === Layout using CSS GRID === */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #f0f4ff;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+      "title title"
+      "puzzle hide"
+      "status status";
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* styled card sections */
+.section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid #e6e6e6;
+}
+
+.section--title { grid-area: title; }
+.section--puzzle { grid-area: puzzle; }
+.section--hide-note { grid-area: hide; }
+.section--solved { grid-area: status; }
+
+/* === PUZZLE FLEXBOX === */
+.puzzle-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+/* visible full puzzle image */
+.final-image {
+  width: 600px;
+  border-radius: 12px;
+  display: block;
+}
+
+/* hide individual puzzle tiles */
+.hidden-piece {
+  display: none;
+}
+
+/* hide faulty puzzle piece */
+.faulty {
+  display: none;
+}
+
+/* responsive (mobile) */
+@media (max-width: 900px) {
+  .page-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "puzzle"
+      "hide"
+      "status";
+  }
+  .final-image {
+    width: 90%;
+  }
+}
